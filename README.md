@@ -17,7 +17,7 @@ The connection to he mqtt broker is handled by the MqttConfiguration class, wher
 Publish and Subscribe are implemented as services in their own classes, where both of them has the mqttClient singleton autowired into them. These are basic implementations of the mqtt pubsub-model.
 
 ### Web endpoints: @RestController
-The services are then exposed as REST endpoints in the MqttController class. Both of the service objects are autowired in. They expose REST endpoints that handle requests at /mqtt/publish and /mqtt/subscribe. 
+The services are then exposed as REST endpoints in the MqttController class. Both of the service objects are autowired in. They are then exposed as REST endpoints that handle requests at /mqtt/publish and /mqtt/subscribe. 
 
 
 # petite-vue
