@@ -11,7 +11,7 @@ Spring framework is used to explore and learn how the decorators are used.
 ## Notable use of decorations
 
 ### @Configuration and @Bean
-The connection to he mqtt broker is handled by the MqttConfiguration class, where the @Bean decorator of the method creates a singleton object. This singleton object is then @autowired in wherever needed. Not entirely sure if @Bean always returns a singleton, atleast it seems to do so within the @Configuration.
+The connection to he mqtt broker is handled by the `MqttConfiguration` class, where the @Bean decorator of the method creates a singleton object. This singleton object is then @autowired in wherever needed. Not entirely sure if @Bean always returns a singleton, atleast it seems to do so within the @Configuration.
 
 ### @Service and @Autowired
 Publish and Subscribe are implemented as services in their own classes, where both of them has the mqttClient singleton autowired into them. These are basic implementations of the mqtt pubsub-model.
