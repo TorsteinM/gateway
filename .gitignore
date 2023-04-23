@@ -35,3 +35,4 @@ build/
 ### Secrets ###
 /src/main/resources/secret.properties
 **secret**
+src/main/resources/secret.properties
