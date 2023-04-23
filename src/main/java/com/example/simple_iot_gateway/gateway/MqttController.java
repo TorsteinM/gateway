@@ -1,7 +1,8 @@
 package com.example.simple_iot_gateway.gateway;
 
+import java.util.Objects;
+
 import org.eclipse.paho.client.mqttv3.MqttException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,11 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/mqtt")
 public class MqttController {
 
-    @Autowired
     private MqttPublisherService mqttPublisherService;
-
-    @Autowired
     private MqttSubscriberService mqttSubscriberService;
+
+    public MqttController(MqttPublisherService mqttPublisherService, MqttSubscriberService mqttSubscriberService) {
+        this.mqttPublisherService = Objects.requireNonNull(mqttPublisherService, "mqttPublisherService must not be null");
+        this.mqttSubscriberService = Objects.requireNonNull(mqttSubscriberService, "mqttSubscriberService must not be null");
+    }
 
     @GetMapping("/publish")
     public String publish(@RequestParam String topic, @RequestParam String payload) {

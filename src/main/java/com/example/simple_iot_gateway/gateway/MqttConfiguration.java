@@ -12,13 +12,18 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @PropertySource("classpath:secret.properties")
 public class MqttConfiguration {
+    private String serverURI;
+    private String clientId;
+    private String clientPass;
 
-    @Value("${mqtt.broker.url}")
-    String serverURI;
-    @Value("${mqtt.username}")
-    String clientId;
-    @Value("${mqtt.password}")
-    String clientPass;
+
+    public MqttConfiguration(@Value("${mqtt.broker.url}") String serverURI,
+                             @Value("${mqtt.username}") String clientId,
+                             @Value("${mqtt.password}") String clientPass ) {
+        this.serverURI = serverURI;
+        this.clientId = clientId;
+        this.clientPass = clientPass;
+    }
 
     @Bean
     public MqttClient mqttClient() throws Exception {

@@ -2,18 +2,20 @@ package com.example.simple_iot_gateway.gateway;
 
 
 import org.eclipse.paho.client.mqttv3.MqttException;
+import java.util.Objects;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MqttSubscriberService implements MqttCallback {
-
-    @Autowired
     private MqttClient mqttClient;
+
+    public MqttSubscriberService(MqttClient mqttClient) {
+        this.mqttClient = Objects.requireNonNull(mqttClient, "mqttClient must not be null");
+    }
 
     public void subscribe(String topic, int qos) throws MqttException {
         mqttClient.setCallback(this);
